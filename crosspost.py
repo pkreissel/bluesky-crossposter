@@ -295,15 +295,15 @@ def tweet(post, replyTo, images, postType, doPost):
     # a quote with images it's posted as that. If just either of the three it is posted as just that, 
     # and if neither it is just posted as a text post.
     if replyTo and mediaIds and postType == "quote":
-        a = twitter.create_tweet(text=post, quote_tweet_id=replyTo, media_ids=mediaIds)
+        a = twitter.create_tweet(text=post, quote_tweet_id=replyTo, media_ids=mediaIds, reply_settings=settings.ReplySettings)
     elif replyTo and mediaIds and postType == "reply":
-        a = twitter.create_tweet(text=post, in_reply_to_tweet_id=replyTo, media_ids=mediaIds)
+        a = twitter.create_tweet(text=post, in_reply_to_tweet_id=replyTo, media_ids=mediaIds, reply_settings=settings.ReplySettings)
     elif postType == "quote":
-        a = twitter.create_tweet(text=post, quote_tweet_id=replyTo)
+        a = twitter.create_tweet(text=post, quote_tweet_id=replyTo, reply_settings=settings.ReplySettings)
     elif replyTo:
-        a = twitter.create_tweet(text=post, in_reply_to_tweet_id=replyTo)
+        a = twitter.create_tweet(text=post, in_reply_to_tweet_id=replyTo, reply_settings=settings.ReplySettings)
     elif mediaIds:
-        a = twitter.create_tweet(text=post, media_ids=mediaIds)
+        a = twitter.create_tweet(text=post, media_ids=mediaIds, reply_settings=settings.ReplySettings)
     else:
         a = twitter.create_tweet(text=post)
     writeLog("Posted to twitter")

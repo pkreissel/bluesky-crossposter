@@ -4,6 +4,7 @@ import os
 # Accepted values: True, False
 Twitter = True
 Mastodon = True
+ReplySettings = "following" # “mentionedUsers” and “following”.
 # Enables/disables logging
 # Accepted values: True, False
 Logging = True
@@ -35,6 +36,7 @@ mastodonVisibility = "hybrid"
 # Override settings with environment variables if they exist
 Twitter = os.environ.get('TWITTER_CROSSPOSTING').lower() == 'true' if os.environ.get('TWITTER_CROSSPOSTING') else Twitter
 Mastodon = os.environ.get('MASTODON_CROSSPOSTING').lower() == 'true' if os.environ.get('MASTODON_CROSSPOSTING') else Mastodon
+ReplySettings = os.environ.get('REPLY_SETTINGS') if os.environ.get('REPLY_SETTINGS') else ReplySettings
 Logging = os.environ.get('LOGGING').lower() == 'true' if os.environ.get('LOGGING') else Logging
 postDefault = os.environ.get('POST_DEFAULT').lower() == 'true' if os.environ.get('POST_DEFAULT') else postDefault
 mastodonLang = os.environ.get('MASTODON_LANG') if os.environ.get('MASTODON_LANG') else mastodonLang
